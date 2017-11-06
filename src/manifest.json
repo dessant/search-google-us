@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.1.0",
+  "author": "Armin Sebastian",
+  "homepage_url": "https://github.com/dessant/google-us-search-provider",
+  "default_locale": "en",
+
+  "applications": {
+    "gecko": {
+      "id": "{05ad67f6-4984-4886-bd54-b970a831132e}",
+      "strict_min_version": "55.0"
+    }
+  },
+  "minimum_chrome_version": "55.0",
+
+  "content_security_policy": "default-src 'none'; sandbox;",
+
+  "icons": {
+    "16": "src/icons/app/icon-16.png",
+    "19": "src/icons/app/icon-19.png",
+    "24": "src/icons/app/icon-24.png",
+    "32": "src/icons/app/icon-32.png",
+    "38": "src/icons/app/icon-38.png",
+    "48": "src/icons/app/icon-48.png",
+    "64": "src/icons/app/icon-64.png",
+    "96": "src/icons/app/icon-96.png",
+    "128": "src/icons/app/icon-128.png"
+  },
+
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "Google US",
+      "search_url":
+        "https://www.google.com/search?gws_rd=cr&gl=US&q={searchTerms}",
+      "keyword": "g",
+      "favicon_url": "https://www.google.com/favicon.ico"
+    }
+  }
+}

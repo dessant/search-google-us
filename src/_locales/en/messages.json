@@ -1,0 +1,12 @@
+{
+  "extensionName": {
+    "message": "Google US Search Provider",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message":
+      "Search Google without being redirected to country-specific versions of the site.",
+    "description": "Description of the extension."
+  }
+}
