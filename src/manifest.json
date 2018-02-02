@@ -34,7 +34,7 @@
       "name": "Google US",
       "search_url":
         "https://www.google.com/search?gws_rd=cr&gl=US&q={searchTerms}",
-      "keyword": "g",
+      "keyword": "!g",
       "favicon_url": "https://www.google.com/favicon.ico"
     }
   }
