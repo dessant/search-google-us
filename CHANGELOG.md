@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/dessant/google-us-search-provider/compare/v1.0.0...v1.0.1) (2018-02-02)
+
+
+### Bug Fixes
+
+* change Firefox extension ID ([9f9f751](https://github.com/dessant/google-us-search-provider/commit/9f9f751))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/dessant/google-us-search-provider/compare/v0.1.0...v1.0.0) (2018-02-02)
 
