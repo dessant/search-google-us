@@ -14,26 +14,25 @@
     "exec": "yarn run build && yarn run start",
     "exec:prod": "yarn run build:prod && yarn run start",
     "zip": "web-ext build -s dist/ -a artifacts/",
-    "start":
-      "web-ext run --bc --url 'about:debugging' --url 'about:addons' -s dist/",
+    "start": "web-ext run -s dist/",
     "update": "ncu --upgrade --upgradeAll && yarn",
     "push": "git push --follow-tags origin master",
     "release": "standard-version && yarn run push"
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "fs-extra": "^4.0.2",
+    "fs-extra": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.4.0",
+    "gulp-imagemin": "^4.1.0",
     "gulp-jsonmin": "^1.1.0",
-    "gulp-merge-json": "^1.2.0",
-    "gulp-sequence": "^0.4.6",
-    "npm-check-updates": "^2.13.0",
+    "gulp-merge-json": "^1.2.1",
+    "gulp-sequence": "^1.0.0",
+    "npm-check-updates": "^2.14.0",
     "recursive-readdir": "^2.2.1",
-    "standard-version": "^4.2.0",
+    "standard-version": "^4.3.0",
     "svg2png": "^4.1.1",
-    "web-ext": "^2.2.2"
+    "web-ext": "^2.4.0"
   },
   "private": true
 }
