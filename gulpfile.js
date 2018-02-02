@@ -81,6 +81,8 @@ gulp.task('manifest', function() {
 
           if (['firefox'].includes(targetEnv)) {
             delete parsedJson.minimum_chrome_version;
+            delete parsedJson.chrome_settings_overrides.search_provider
+              .encoding;
           }
 
           parsedJson.version = require('./package.json').version;

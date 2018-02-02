@@ -36,7 +36,8 @@
         "https://www.google.com/search?gws_rd=cr&gl=US&q={searchTerms}",
       "favicon_url": "https://www.google.com/favicon.ico",
       "keyword": "!g",
-      "is_default": true
+      "is_default": true,
+      "encoding": "UTF-8"
     }
   }
 }
