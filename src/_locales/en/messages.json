@@ -6,7 +6,7 @@
 
   "extensionDescription": {
     "message":
-      "Search Google without being redirected to country-specific versions of the site.",
+      "Search Google without being redirected to local search results.",
     "description": "Description of the extension."
   }
 }
