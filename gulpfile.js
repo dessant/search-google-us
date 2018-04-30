@@ -98,6 +98,6 @@ gulp.task('copy', function() {
   gulp.src(['LICENSE']).pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', gulpSeq('clean', ['icons', 'locale', 'manifest', 'copy']));
+gulp.task('build', gulpSeq('clean', ['icons', 'locale', 'manifest'], 'copy'));
 
 gulp.task('default', ['build']);
