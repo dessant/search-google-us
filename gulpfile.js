@@ -94,10 +94,25 @@ gulp.task('manifest', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copy', function() {
+gulp.task('license', function(done) {
+  let year = '2017';
+  const currentYear = new Date().getFullYear().toString();
+  if (year !== currentYear) {
+    year = `${year}-${currentYear}`;
+  }
+
+  const notice = `Search on Google US
+Copyright (c) ${year} Armin Sebastian
+
+This software is released under the terms of the GNU General Public License v3.0.
+See the LICENSE file for further information.
+`;
+
+  writeFileSync('dist/NOTICE', notice);
   gulp.src(['LICENSE']).pipe(gulp.dest('dist'));
+  done();
 });
 
-gulp.task('build', gulpSeq('clean', ['icons', 'locale', 'manifest'], 'copy'));
+gulp.task('build', gulpSeq('clean', ['icons', 'locale', 'manifest', 'license']));
 
 gulp.task('default', ['build']);
