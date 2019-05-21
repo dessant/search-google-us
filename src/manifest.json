@@ -10,7 +10,7 @@
   "applications": {
     "gecko": {
       "id": "{f7d8cc49-b111-43ea-a627-1934526dd442}",
-      "strict_min_version": "57.0"
+      "strict_min_version": "64.0"
     }
   },
   "minimum_chrome_version": "56.0",
@@ -32,8 +32,8 @@
   "chrome_settings_overrides": {
     "search_provider": {
       "name": "Google US",
-      "search_url":
-        "https://www.google.com/search?gws_rd=cr&gl=US&q={searchTerms}",
+      "search_url": "https://www.google.com/search?gl=us&hl=en&gws_rd=cr&q={searchTerms}",
+      "suggest_url": "https://www.google.com/complete/search?gl=us&hl=en&client={client}&q={searchTerms}",
       "favicon_url": "https://www.google.com/favicon.ico",
       "keyword": "!g",
       "is_default": true,

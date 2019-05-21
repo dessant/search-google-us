@@ -91,6 +91,11 @@ gulp.task('manifest', function(done) {
               .encoding;
           }
 
+          parsedJson.chrome_settings_overrides.search_provider.suggest_url = parsedJson.chrome_settings_overrides.search_provider.suggest_url.replace(
+            '{client}',
+            targetEnv
+          );
+
           parsedJson.version = require('./package.json').version;
           return parsedJson;
         }

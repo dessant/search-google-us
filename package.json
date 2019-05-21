@@ -24,6 +24,10 @@
     "push": "git push --follow-tags origin master",
     "release": "standard-version"
   },
+  "browserslist": [
+    "Chrome >= 56",
+    "Firefox >= 64"
+  ],
   "devDependencies": {
     "cross-env": "^5.2.0",
     "del": "^4.1.1",
