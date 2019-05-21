@@ -13,9 +13,9 @@
 The continued development of Search on Google US is made possible
 thanks to the support of awesome backers. If you'd like to join them,
 please consider contributing with
-[Patreon](https://armin.dev/go/patreon?pr=google-us&src=repo),
-[PayPal](https://armin.dev/go/paypal?pr=google-us&src=repo) or
-[Bitcoin](https://armin.dev/go/bitcoin?pr=google-us&src=repo).
+[Patreon](https://armin.dev/go/patreon?pr=search-google-us&src=repo),
+[PayPal](https://armin.dev/go/paypal?pr=search-google-us&src=repo) or
+[Bitcoin](https://armin.dev/go/bitcoin?pr=search-google-us&src=repo).
 
 ## Description
 
