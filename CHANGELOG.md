@@ -1,6 +1,24 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/dessant/search-google-us/compare/v1.0.2...v2.0.0) (2019-05-21)
+
+
+### Features
+
+* change license to GPLv3 ([cdc65f3](https://github.com/dessant/search-google-us/commit/cdc65f3))
+* change logo ([6b06e03](https://github.com/dessant/search-google-us/commit/6b06e03))
+* change name ([f4f9601](https://github.com/dessant/search-google-us/commit/f4f9601))
+* support search suggestions ([5716c1a](https://github.com/dessant/search-google-us/commit/5716c1a))
+* update dependencies ([f253b2e](https://github.com/dessant/search-google-us/commit/f253b2e))
+
+
+### BREAKING CHANGES
+
+* Firefox < 64 is no longer supported.
+
+
 
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/dessant/google-us-search-provider/compare/v1.0.1...v1.0.2) (2018-07-12)
