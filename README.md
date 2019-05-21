@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/g0HL1oh.png"></p>
+<p align="center"><img src="https://i.imgur.com/HFhYFBV.png"></p>
 <h1 align="center">Search on Google US</h1>
 
 <p align="center">
