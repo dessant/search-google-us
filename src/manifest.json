@@ -4,7 +4,7 @@
   "description": "__MSG_extensionDescription__",
   "version": "0.1.0",
   "author": "Armin Sebastian",
-  "homepage_url": "https://github.com/dessant/google-us-search-provider",
+  "homepage_url": "https://github.com/dessant/search-google-us",
   "default_locale": "en",
 
   "applications": {

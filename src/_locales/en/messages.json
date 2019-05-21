@@ -1,12 +1,11 @@
 {
   "extensionName": {
-    "message": "Google US Search Provider",
+    "message": "Search on Google US",
     "description": "Name of the extension."
   },
 
   "extensionDescription": {
-    "message":
-      "Search Google without being redirected to local search results.",
+    "message": "Search Google without being redirected to local search results.",
     "description": "Description of the extension."
   }
 }

@@ -1,8 +1,8 @@
 {
-  "name": "google-us-search-provider",
+  "name": "search-google-us",
   "version": "1.0.2",
   "author": "Armin Sebastian",
-  "repository": "https://github.com/dessant/google-us-search-provider",
+  "repository": "https://github.com/dessant/search-google-us",
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=development gulp",
