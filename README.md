@@ -3,9 +3,6 @@
 
 <p align="center">
   </br></br>
-  <a href="">
-    <img src="https://i.imgur.com/q6E8SOD.png" alt="Chrome Web Store"></a>
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/google-us-search-provider/">
   <a href="https://addons.mozilla.org/en-US/firefox/addon/search-google-us/">
     <img src="https://i.imgur.com/dvof8rG.png" alt="Firefox add-ons"></a>
   </br></br>
@@ -15,8 +12,10 @@
 
 The continued development of Search on Google US is made possible
 thanks to the support of awesome backers. If you'd like to join them,
-please consider contributing with [Patreon](https://goo.gl/qRhKSW),
-[PayPal](https://goo.gl/5FnBaw) or [Bitcoin](https://goo.gl/uJUAaU).
+please consider contributing with
+[Patreon](https://armin.dev/go/patreon?pr=google-us&src=repo),
+[PayPal](https://armin.dev/go/paypal?pr=google-us&src=repo) or
+[Bitcoin](https://armin.dev/go/bitcoin?pr=google-us&src=repo).
 
 ## Description
 
