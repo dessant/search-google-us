@@ -18,8 +18,6 @@
     "build:prod:zip:firefox": "cross-env TARGET_ENV=firefox yarn _build:prod:zip",
     "build:prod:zip:all": "run-s 'build:prod:zip:@(chrome|firefox)'",
     "start": "web-ext run -s dist/firefox",
-    "exec": "run-s build:firefox start",
-    "exec:prod": "run-s build:prod:firefox start",
     "update": "ncu --upgrade && yarn",
     "push": "git push --follow-tags origin master",
     "release": "standard-version"
