@@ -3,7 +3,6 @@ const {exec} = require('child_process');
 const {lstatSync, readdirSync, readFileSync, writeFileSync} = require('fs');
 
 const {ensureDirSync} = require('fs-extra');
-const recursiveReadDir = require('recursive-readdir');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const del = require('del');
