@@ -17,7 +17,8 @@
     "build:prod:zip:chrome": "cross-env TARGET_ENV=chrome yarn _build:prod:zip",
     "build:prod:zip:firefox": "cross-env TARGET_ENV=firefox yarn _build:prod:zip",
     "build:prod:zip:all": "run-s 'build:prod:zip:@(chrome|firefox)'",
-    "start": "web-ext run -s dist/firefox",
+    "start:chrome": "web-ext run -s dist/chrome -t chromium",
+    "start:firefox": "web-ext run -s dist/firefox -t firefox-desktop",
     "update": "ncu --upgrade && yarn",
     "push": "git push --follow-tags origin master",
     "release": "standard-version"
