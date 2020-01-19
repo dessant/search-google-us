@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/dessant/search-google-us/compare/v2.1.1...v3.0.0) (2020-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* browser versions before Chrome 76 and Firefox 68
+are no longer supported
+
+### Bug Fixes
+
+* remove support for outdated browsers ([7147841](https://github.com/dessant/search-google-us/commit/71478419395b65f97818441f5bfc8d78998633d7))
+
 ### [2.1.1](https://github.com/dessant/search-google-us/compare/v2.1.0...v2.1.1) (2019-05-22)
 
 
