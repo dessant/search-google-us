@@ -24,8 +24,8 @@
     "release": "standard-version"
   },
   "browserslist": [
-    "Chrome >= 56",
-    "Firefox >= 64"
+    "Chrome >= 76",
+    "Firefox >= 68"
   ],
   "devDependencies": {
     "cross-env": "^6.0.3",

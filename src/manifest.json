@@ -10,10 +10,10 @@
   "applications": {
     "gecko": {
       "id": "{f7d8cc49-b111-43ea-a627-1934526dd442}",
-      "strict_min_version": "64.0"
+      "strict_min_version": "68.0"
     }
   },
-  "minimum_chrome_version": "56.0",
+  "minimum_chrome_version": "76.0",
 
   "content_security_policy": "default-src 'none'; sandbox;",
 
