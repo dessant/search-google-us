@@ -5,11 +5,11 @@
   "repository": "https://github.com/dessant/search-google-us",
   "license": "GPL-3.0-only",
   "scripts": {
-    "_build": "cross-env NODE_ENV=development gulp",
+    "_build": "cross-env NODE_ENV=development gulp build",
     "build:chrome": "cross-env TARGET_ENV=chrome yarn _build",
     "build:firefox": "cross-env TARGET_ENV=firefox yarn _build",
     "build:all": "run-s 'build:@(chrome|firefox)'",
-    "_build:prod": "cross-env NODE_ENV=production gulp",
+    "_build:prod": "cross-env NODE_ENV=production gulp build",
     "build:prod:chrome": "cross-env TARGET_ENV=chrome yarn _build:prod",
     "build:prod:firefox": "cross-env TARGET_ENV=firefox yarn _build:prod",
     "build:prod:all": "run-s 'build:prod:@(chrome|firefox)'",
@@ -19,7 +19,7 @@
     "build:prod:zip:all": "run-s 'build:prod:zip:@(chrome|firefox)'",
     "start:chrome": "web-ext run -s dist/chrome -t chromium",
     "start:firefox": "web-ext run -s dist/firefox -t firefox-desktop",
-    "update": "ncu --upgrade && yarn",
+    "update": "ncu --upgrade",
     "push": "git push --follow-tags origin master",
     "release": "standard-version"
   },
@@ -28,20 +28,20 @@
     "Firefox >= 68"
   ],
   "devDependencies": {
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^7.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-jsonmin": "^1.2.0",
-    "gulp-merge-json": "^1.3.1",
-    "npm-check-updates": "^4.0.1",
+    "gulp-merge-json": "^2.1.1",
+    "npm-check-updates": "^9.0.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
-    "standard-version": "^7.0.1",
-    "svg2png": "^4.1.1",
-    "web-ext": "^4.0.0"
+    "prettier": "^2.1.2",
+    "sharp": "^0.26.1",
+    "standard-version": "^9.0.0",
+    "web-ext": "^5.1.0"
   },
   "private": true
 }
