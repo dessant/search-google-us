@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/dessant/search-google-us/compare/v3.0.0...v3.0.1) (2020-09-23)
+
+
+### Bug Fixes
+
+* update dependencies and rework build script ([2190a2d](https://github.com/dessant/search-google-us/commit/2190a2dc0ed04603d01a706c4837e515190d9d66))
+
 ## [3.0.0](https://github.com/dessant/search-google-us/compare/v2.1.1...v3.0.0) (2020-01-19)
 
 
