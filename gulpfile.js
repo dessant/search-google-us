@@ -81,7 +81,7 @@ gulp.task('manifest', function(done) {
         fileName: 'manifest.json',
         edit: (parsedJson, file) => {
           if (['chrome'].includes(targetEnv)) {
-            delete parsedJson.applications;
+            delete parsedJson.browser_specific_settings;
           }
 
           if (['firefox'].includes(targetEnv)) {

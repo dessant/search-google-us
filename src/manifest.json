@@ -7,7 +7,7 @@
   "homepage_url": "https://github.com/dessant/search-google-us",
   "default_locale": "en",
 
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "{f7d8cc49-b111-43ea-a627-1934526dd442}",
       "strict_min_version": "68.0"
