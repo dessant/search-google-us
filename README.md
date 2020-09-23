@@ -4,7 +4,7 @@
 <p align="center">
   </br></br>
   <a href="https://addons.mozilla.org/en-US/firefox/addon/search-google-us/">
-    <img src="https://i.imgur.com/dvof8rG.png" alt="Firefox add-ons"></a>
+    <img src="https://i.imgur.com/kMH6r1a.png" alt="Firefox add-ons"></a>
   </br></br>
 </p>
 
