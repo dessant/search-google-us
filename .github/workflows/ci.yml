@@ -68,8 +68,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: artifacts/chrome/search_google_us-${{ steps.release_info.outputs.VERSION }}-chrome.zip
-          asset_name: search_google_us-${{ steps.release_info.outputs.VERSION }}-chrome.zip
+          asset_path: artifacts/chrome/search_on_google_us-${{ steps.release_info.outputs.VERSION }}-chrome.zip
+          asset_name: search_on_google_us-${{ steps.release_info.outputs.VERSION }}-chrome.zip
           asset_content_type: application/octet-stream
       - name: Upload GitHub release assets
         uses: actions/upload-release-asset@v1
@@ -77,6 +77,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: artifacts/firefox/search_google_us-${{ steps.release_info.outputs.VERSION }}-firefox.zip
-          asset_name: search_google_us-${{ steps.release_info.outputs.VERSION }}-firefox.zip
+          asset_path: artifacts/firefox/search_on_google_us-${{ steps.release_info.outputs.VERSION }}-firefox.zip
+          asset_name: search_on_google_us-${{ steps.release_info.outputs.VERSION }}-firefox.zip
           asset_content_type: application/octet-stream
