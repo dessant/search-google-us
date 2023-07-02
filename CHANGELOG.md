@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/dessant/search-google-us/compare/v3.0.2...v4.0.0) (2023-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* browser versions older than Chrome 92 and Firefox 91
+are no longer supported
+
+### Features
+
+* turn off safe search ([bd19ba9](https://github.com/dessant/search-google-us/commit/bd19ba9de4d257378b6ad14df61b26eb2e5b72ec))
+
+
+### Bug Fixes
+
+* update dependencies ([3d1b208](https://github.com/dessant/search-google-us/commit/3d1b208dab1a33df2c81cf90b68a96be0fc23e45))
+
 ### [3.0.2](https://github.com/dessant/search-google-us/compare/v3.0.1...v3.0.2) (2020-09-23)
 
 
