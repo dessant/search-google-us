@@ -1,37 +1,50 @@
-const path = require('path');
-const {exec} = require('child_process');
-const {lstatSync, readdirSync, readFileSync, writeFileSync} = require('fs');
+const path = require('node:path');
+const {exec} = require('node:child_process');
+const {
+  lstatSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+  rmSync
+} = require('node:fs');
 
 const {series, parallel, src, dest} = require('gulp');
 const gulpif = require('gulp-if');
 const jsonMerge = require('gulp-merge-json');
 const jsonmin = require('gulp-jsonmin');
 const imagemin = require('gulp-imagemin');
-const del = require('del');
 const {ensureDirSync} = require('fs-extra');
 const sharp = require('sharp');
 
-const targetEnv = process.env.TARGET_ENV || 'firefox';
+const targetEnv = process.env.TARGET_ENV || 'chrome';
 const isProduction = process.env.NODE_ENV === 'production';
-const distDir = path.join('dist', targetEnv);
+const distDir = path.join(__dirname, 'dist', targetEnv);
 
-function clean() {
-  return del([distDir]);
+function initEnv() {
+  process.env.BROWSERSLIST_ENV = targetEnv;
+}
+
+function init(done) {
+  initEnv();
+
+  rmSync(distDir, {recursive: true, force: true});
+  ensureDirSync(distDir);
+  done();
 }
 
 async function images(done) {
-  ensureDirSync(path.join(distDir, 'src/icons/app'));
-  const appIconSvg = readFileSync('src/icons/app/icon.svg');
+  ensureDirSync(path.join(distDir, 'src/assets/icons/app'));
+  const appIconSvg = readFileSync('src/assets/icons/app/icon.svg');
   const appIconSizes = [16, 19, 24, 32, 38, 48, 64, 96, 128];
   for (const size of appIconSizes) {
     await sharp(appIconSvg, {density: (72 * size) / 24})
       .resize(size)
-      .toFile(path.join(distDir, `src/icons/app/icon-${size}.png`));
+      .toFile(path.join(distDir, `src/assets/icons/app/icon-${size}.png`));
   }
   // Chrome Web Store does not correctly display optimized icons
   if (isProduction && targetEnv !== 'chrome') {
     await new Promise(resolve => {
-      src(path.join(distDir, 'src/icons/app/*.png'), {base: '.'})
+      src(path.join(distDir, 'src/assets/icons/app/*.png'), {base: '.'})
         .pipe(imagemin())
         .pipe(dest('.'))
         .on('error', done)
@@ -41,7 +54,7 @@ async function images(done) {
 }
 
 async function locale(done) {
-  const localesRootDir = path.join(__dirname, 'src/_locales');
+  const localesRootDir = path.join(__dirname, 'src/assets/locales');
   const localeDirs = readdirSync(localesRootDir).filter(function (file) {
     return lstatSync(path.join(localesRootDir, file)).isDirectory();
   });
@@ -79,25 +92,18 @@ async function locale(done) {
 }
 
 function manifest() {
-  return src('src/manifest.json')
+  return src(`src/assets/manifest/${targetEnv}.json`)
     .pipe(
       jsonMerge({
         fileName: 'manifest.json',
         edit: (parsedJson, file) => {
-          if (['chrome'].includes(targetEnv)) {
-            delete parsedJson.browser_specific_settings;
-          }
-
-          if (['firefox'].includes(targetEnv)) {
-            delete parsedJson.minimum_chrome_version;
-          }
+          parsedJson.version = require('./package.json').version;
 
           parsedJson.chrome_settings_overrides.search_provider.suggest_url = parsedJson.chrome_settings_overrides.search_provider.suggest_url.replace(
             '{client}',
             targetEnv
           );
 
-          parsedJson.version = require('./package.json').version;
           return parsedJson;
         }
       })
@@ -121,12 +127,12 @@ See the LICENSE file for further information.
 `;
 
   writeFileSync(path.join(distDir, 'NOTICE'), notice);
-  return src(['LICENSE']).pipe(dest(distDir));
+  return src('LICENSE').pipe(dest(distDir));
 }
 
 function zip(done) {
   exec(
-    `web-ext build -s dist/${targetEnv} -a artifacts/${targetEnv} -n '{name}-{version}-${targetEnv}.zip' --overwrite-dest`,
+    `web-ext build -s dist/${targetEnv} -a artifacts/${targetEnv} -n "{name}-{version}-${targetEnv}.zip" --overwrite-dest`,
     function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
@@ -135,5 +141,5 @@ function zip(done) {
   );
 }
 
-exports.build = series(clean, parallel(images, locale, manifest, license));
+exports.build = series(init, parallel(images, locale, manifest, license));
 exports.zip = zip;

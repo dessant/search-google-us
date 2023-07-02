@@ -2,46 +2,48 @@
   "name": "search-google-us",
   "version": "3.0.2",
   "author": "Armin Sebastian",
-  "repository": "https://github.com/dessant/search-google-us",
   "license": "GPL-3.0-only",
+  "homepage": "https://github.com/dessant/search-google-us",
+  "repository": {
+    "url": "https://github.com/dessant/search-google-us.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/dessant/search-google-us/issues"
+  },
   "scripts": {
     "_build": "cross-env NODE_ENV=development gulp build",
-    "build:chrome": "cross-env TARGET_ENV=chrome yarn _build",
-    "build:firefox": "cross-env TARGET_ENV=firefox yarn _build",
-    "build:all": "run-s 'build:@(chrome|firefox)'",
+    "build:chrome": "cross-env TARGET_ENV=chrome npm run _build",
+    "build:firefox": "cross-env TARGET_ENV=firefox npm run _build",
     "_build:prod": "cross-env NODE_ENV=production gulp build",
-    "build:prod:chrome": "cross-env TARGET_ENV=chrome yarn _build:prod",
-    "build:prod:firefox": "cross-env TARGET_ENV=firefox yarn _build:prod",
-    "build:prod:all": "run-s 'build:prod:@(chrome|firefox)'",
-    "_build:prod:zip": "yarn _build:prod && gulp zip",
-    "build:prod:zip:chrome": "cross-env TARGET_ENV=chrome yarn _build:prod:zip",
-    "build:prod:zip:firefox": "cross-env TARGET_ENV=firefox yarn _build:prod:zip",
-    "build:prod:zip:all": "run-s 'build:prod:zip:@(chrome|firefox)'",
+    "build:prod:chrome": "cross-env TARGET_ENV=chrome npm run _build:prod",
+    "build:prod:firefox": "cross-env TARGET_ENV=firefox npm run _build:prod",
+    "_build:prod:zip": "npm run _build:prod && gulp zip",
+    "build:prod:zip:chrome": "cross-env TARGET_ENV=chrome npm run _build:prod:zip",
+    "build:prod:zip:firefox": "cross-env TARGET_ENV=firefox npm run _build:prod:zip",
     "start:chrome": "web-ext run -s dist/chrome -t chromium",
     "start:firefox": "web-ext run -s dist/firefox -t firefox-desktop",
+    "start:android": "web-ext run -s dist/firefox -t firefox-android",
     "update": "ncu --upgrade",
-    "push": "git push --follow-tags origin master",
-    "release": "standard-version"
+    "release": "standard-version",
+    "push": "git push --follow-tags origin main"
   },
-  "browserslist": [
-    "Chrome >= 76",
-    "Firefox >= 68"
-  ],
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "del": "^5.1.0",
-    "fs-extra": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^11.1.1",
     "gulp": "^4.0.2",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-jsonmin": "^1.2.0",
-    "gulp-merge-json": "^2.1.1",
-    "npm-check-updates": "^9.0.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "sharp": "^0.26.1",
-    "standard-version": "^9.0.0",
-    "web-ext": "^5.1.0"
+    "gulp-merge-json": "^2.1.2",
+    "npm-check-updates": "^16.10.12",
+    "prettier": "^2.8.8",
+    "sharp": "^0.32.1",
+    "standard-version": "^9.5.0",
+    "web-ext": "^7.6.2"
+  },
+  "overrides": {
+    "glob": "7.2.3"
   },
   "private": true
 }

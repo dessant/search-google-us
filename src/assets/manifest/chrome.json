@@ -7,26 +7,20 @@
   "homepage_url": "https://github.com/dessant/search-google-us",
   "default_locale": "en",
 
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{f7d8cc49-b111-43ea-a627-1934526dd442}",
-      "strict_min_version": "68.0"
-    }
-  },
-  "minimum_chrome_version": "76.0",
+  "minimum_chrome_version": "92.0",
 
   "content_security_policy": "default-src 'none'; sandbox;",
 
   "icons": {
-    "16": "src/icons/app/icon-16.png",
-    "19": "src/icons/app/icon-19.png",
-    "24": "src/icons/app/icon-24.png",
-    "32": "src/icons/app/icon-32.png",
-    "38": "src/icons/app/icon-38.png",
-    "48": "src/icons/app/icon-48.png",
-    "64": "src/icons/app/icon-64.png",
-    "96": "src/icons/app/icon-96.png",
-    "128": "src/icons/app/icon-128.png"
+    "16": "src/assets/icons/app/icon-16.png",
+    "19": "src/assets/icons/app/icon-19.png",
+    "24": "src/assets/icons/app/icon-24.png",
+    "32": "src/assets/icons/app/icon-32.png",
+    "38": "src/assets/icons/app/icon-38.png",
+    "48": "src/assets/icons/app/icon-48.png",
+    "64": "src/assets/icons/app/icon-64.png",
+    "96": "src/assets/icons/app/icon-96.png",
+    "128": "src/assets/icons/app/icon-128.png"
   },
 
   "chrome_settings_overrides": {
@@ -39,5 +33,7 @@
       "is_default": true,
       "encoding": "UTF-8"
     }
-  }
+  },
+
+  "incognito": "split"
 }

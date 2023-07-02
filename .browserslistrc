@@ -1,0 +1,8 @@
+[chrome]
+Chrome >= 92
+Edge >= 92
+Opera >= 78
+
+[firefox]
+Firefox >= 91
+FirefoxAndroid >= 91
