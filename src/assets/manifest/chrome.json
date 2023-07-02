@@ -26,7 +26,7 @@
   "chrome_settings_overrides": {
     "search_provider": {
       "name": "Google US",
-      "search_url": "https://www.google.com/search?gl=us&hl=en&gws_rd=cr&q={searchTerms}",
+      "search_url": "https://www.google.com/search?gl=us&hl=en&gws_rd=cr&safe=off&q={searchTerms}",
       "suggest_url": "https://www.google.com/complete/search?gl=us&hl=en&client={client}&q={searchTerms}",
       "favicon_url": "https://www.google.com/favicon.ico",
       "keyword": "!g",
