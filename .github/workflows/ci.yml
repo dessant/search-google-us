@@ -23,7 +23,6 @@ jobs:
       - name: Build artifacts
         run: |
           npm run build:prod:zip:chrome
-          npm run build:prod:zip:edge
           npm run build:prod:zip:firefox
       - name: Hash artifacts
         run: sha256sum artifacts/*/*
