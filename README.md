@@ -3,8 +3,10 @@
 
 <p align="center">
   </br></br>
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/search-google-us/">
-    <img height="58" src="https://i.imgur.com/2jJOtTI.png" alt="Firefox add-ons"></a>
+  <a href="https://addons.mozilla.org/firefox/addon/search-google-us/">
+    <picture>
+      <source srcset="https://i.imgur.com/ZluoP7T.png" media="(prefers-color-scheme: dark)">
+      <img height="58" src="https://i.imgur.com/4PobQqE.png" alt="Firefox add-ons"></picture></a>
   </br></br>
 </p>
 
