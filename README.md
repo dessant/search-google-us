@@ -15,9 +15,9 @@
 The continued development of Search on Google US is made possible
 thanks to the support of awesome backers. If you'd like to join them,
 please consider contributing with
-[Patreon](https://armin.dev/go/patreon?pr=search-google-us&src=repo),
-[PayPal](https://armin.dev/go/paypal?pr=search-google-us&src=repo) or
-[Bitcoin](https://armin.dev/go/bitcoin?pr=search-google-us&src=repo).
+[Patreon](https://go.vapps.dev/patreon?pr=search-google-us&src=repo),
+[PayPal](https://go.vapps.dev/paypal?pr=search-google-us&src=repo) or
+[Bitcoin](https://go.vapps.dev/bitcoin?pr=search-google-us&src=repo).
 
 ## Description
 
@@ -28,7 +28,7 @@ search engine from the browser's settings.
 
 ## License
 
-Copyright (c) 2017-2023 Armin Sebastian
+Copyright (c) 2017-2026 Armin Sebastian
 
 This software is released under the terms of the GNU General Public License v3.0.
 See the [LICENSE](LICENSE) file for further information.
