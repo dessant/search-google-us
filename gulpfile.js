@@ -1,51 +1,61 @@
-const path = require('node:path');
-const {exec} = require('node:child_process');
-const {
-  lstatSync,
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-  rmSync
-} = require('node:fs');
+import path from 'node:path';
+import {exec} from 'node:child_process';
+import {lstat, readdir, readFile, writeFile, rm} from 'node:fs/promises';
+import {createRequire} from 'node:module';
 
-const {series, parallel, src, dest} = require('gulp');
-const gulpif = require('gulp-if');
+import {series, parallel, src, dest} from 'gulp';
+import gulpif from 'gulp-if';
+import jsonmin from 'gulp-jsonmin';
+import imagemin from 'gulp-imagemin';
+import {optipng} from 'gulp-imagemin';
+import {ensureDir} from 'fs-extra/esm';
+import sharp from 'sharp';
+
+const require = createRequire(import.meta.url);
+const __dirname = import.meta.dirname;
+
 const jsonMerge = require('gulp-merge-json');
-const jsonmin = require('gulp-jsonmin');
-const imagemin = require('gulp-imagemin');
-const {ensureDirSync} = require('fs-extra');
-const sharp = require('sharp');
+
+const {
+  default: {name: appName, version: appVersion}
+} = await import('./package.json', {with: {type: 'json'}});
 
 const targetEnv = process.env.TARGET_ENV || 'chrome';
 const isProduction = process.env.NODE_ENV === 'production';
+
 const distDir = path.join(__dirname, 'dist', targetEnv);
 
 function initEnv() {
   process.env.BROWSERSLIST_ENV = targetEnv;
 }
 
-function init(done) {
+async function init() {
   initEnv();
 
-  rmSync(distDir, {recursive: true, force: true});
-  ensureDirSync(distDir);
-  done();
+  await rm(distDir, {recursive: true, force: true});
+  await ensureDir(distDir);
 }
 
 async function images(done) {
-  ensureDirSync(path.join(distDir, 'src/assets/icons/app'));
-  const appIconSvg = readFileSync('src/assets/icons/app/icon.svg');
+  await ensureDir(path.join(distDir, 'src/assets/icons/app'));
+  const appIconSvg = await readFile('src/assets/icons/app/icon.svg');
   const appIconSizes = [16, 19, 24, 32, 38, 48, 64, 96, 128];
+  if (targetEnv === 'safari') {
+    appIconSizes.push(256, 512, 1024);
+  }
   for (const size of appIconSizes) {
     await sharp(appIconSvg, {density: (72 * size) / 24})
       .resize(size)
       .toFile(path.join(distDir, `src/assets/icons/app/icon-${size}.png`));
   }
-  // Chrome Web Store does not correctly display optimized icons
-  if (isProduction && targetEnv !== 'chrome') {
+
+  if (isProduction) {
     await new Promise(resolve => {
-      src(path.join(distDir, 'src/assets/icons/app/*.png'), {base: '.'})
-        .pipe(imagemin())
+      src(path.join(distDir, 'src/assets/icons/app/*.png'), {
+        base: '.',
+        encoding: false
+      })
+        .pipe(imagemin([optipng()]))
         .pipe(dest('.'))
         .on('error', done)
         .on('finish', resolve);
@@ -55,9 +65,16 @@ async function images(done) {
 
 async function locale(done) {
   const localesRootDir = path.join(__dirname, 'src/assets/locales');
-  const localeDirs = readdirSync(localesRootDir).filter(function (file) {
-    return lstatSync(path.join(localesRootDir, file)).isDirectory();
-  });
+  const localeDirs = (
+    await Promise.all(
+      (await readdir(localesRootDir)).map(async function (file) {
+        if ((await lstat(path.join(localesRootDir, file))).isDirectory()) {
+          return file;
+        }
+      })
+    )
+  ).filter(Boolean);
+
   for (const localeDir of localeDirs) {
     const localePath = path.join(localesRootDir, localeDir);
     await new Promise(resolve => {
@@ -97,13 +114,7 @@ function manifest() {
       jsonMerge({
         fileName: 'manifest.json',
         edit: (parsedJson, file) => {
-          parsedJson.version = require('./package.json').version;
-
-          parsedJson.chrome_settings_overrides.search_provider.suggest_url = parsedJson.chrome_settings_overrides.search_provider.suggest_url.replace(
-            '{client}',
-            targetEnv
-          );
-
+          parsedJson.version = appVersion;
           return parsedJson;
         }
       })
@@ -112,25 +123,61 @@ function manifest() {
     .pipe(dest(distDir));
 }
 
-function license() {
+async function license(done) {
   let year = '2017';
   const currentYear = new Date().getFullYear().toString();
   if (year !== currentYear) {
     year = `${year}-${currentYear}`;
   }
 
-  const notice = `Search on Google US
+  let notice = `Search on Google US
 Copyright (c) ${year} Armin Sebastian
+`;
 
+  if (['safari', 'samsung'].includes(targetEnv)) {
+    await writeFile(path.join(distDir, 'NOTICE'), notice);
+  } else {
+    notice = `${notice}
 This software is released under the terms of the GNU General Public License v3.0.
 See the LICENSE file for further information.
 `;
+    await writeFile(path.join(distDir, 'NOTICE'), notice);
 
-  writeFileSync(path.join(distDir, 'NOTICE'), notice);
-  return src('LICENSE').pipe(dest(distDir));
+    await new Promise(resolve => {
+      src('LICENSE')
+        .pipe(dest(distDir))
+        .on('error', done)
+        .on('finish', resolve);
+    });
+  }
+}
+
+function checkEnv(done) {
+  if (!['x64', 'ia32'].includes(process.arch)) {
+    done();
+
+    console.log(`
+The current CPU architecture (${process.arch}) is not supported.
+
+Please consult the provided build instructions, or follow the online guide.
+
+https://github.com/dessant/${appName}/wiki/Building-the-extension-on-Ubuntu
+https://github.com/dessant/${appName}/wiki/Building-the-extension-on-Windows
+`);
+
+    process.exit(1);
+  }
+}
+
+function build(done) {
+  checkEnv(done);
+
+  return series(init, parallel(images, locale, manifest, license))(done);
 }
 
 function zip(done) {
+  checkEnv(done);
+
   exec(
     `web-ext build -s dist/${targetEnv} -a artifacts/${targetEnv} -n "{name}-{version}-${targetEnv}.zip" --overwrite-dest`,
     function (err, stdout, stderr) {
@@ -141,5 +188,4 @@ function zip(done) {
   );
 }
 
-exports.build = series(init, parallel(images, locale, manifest, license));
-exports.zip = zip;
+export {build, zip};

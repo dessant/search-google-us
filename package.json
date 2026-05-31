@@ -5,12 +5,13 @@
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/dessant/search-google-us",
   "repository": {
-    "url": "https://github.com/dessant/search-google-us.git",
+    "url": "git+https://github.com/dessant/search-google-us.git",
     "type": "git"
   },
   "bugs": {
     "url": "https://github.com/dessant/search-google-us/issues"
   },
+  "type": "module",
   "scripts": {
     "_build": "cross-env NODE_ENV=development gulp build",
     "build:chrome": "cross-env TARGET_ENV=chrome npm run _build",
@@ -23,27 +24,23 @@
     "build:prod:zip:firefox": "cross-env TARGET_ENV=firefox npm run _build:prod:zip",
     "start:chrome": "web-ext run -s dist/chrome -t chromium",
     "start:firefox": "web-ext run -s dist/firefox -t firefox-desktop",
-    "start:android": "web-ext run -s dist/firefox -t firefox-android",
-    "update": "ncu --upgrade",
-    "release": "standard-version",
+    "update": "ncu --dep prod,dev,peer --filterVersion '^*' --upgrade",
+    "release": "commit-and-tag-version",
     "push": "git push --follow-tags origin main"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "fs-extra": "^11.1.1",
-    "gulp": "^4.0.2",
+    "commit-and-tag-version": "^12.7.3",
+    "cross-env": "^10.1.0",
+    "fs-extra": "^11.3.5",
+    "gulp": "^5.0.1",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^9.2.0",
     "gulp-jsonmin": "^1.2.0",
-    "gulp-merge-json": "^2.1.2",
-    "npm-check-updates": "^16.10.12",
-    "prettier": "^2.8.8",
-    "sharp": "^0.32.1",
-    "standard-version": "^9.5.0",
-    "web-ext": "^7.6.2"
-  },
-  "overrides": {
-    "glob": "7.2.3"
+    "gulp-merge-json": "^2.2.1",
+    "npm-check-updates": "^22.2.0",
+    "prettier": "^3.8.3",
+    "sharp": "^0.34.5",
+    "web-ext": "^10.1.0"
   },
   "private": true
 }
