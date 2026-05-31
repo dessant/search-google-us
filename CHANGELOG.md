@@ -1,6 +1,24 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [5.0.0](https://github.com/dessant/search-google-us/compare/v4.0.0...v5.0.0) (2026-05-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* browser versions older than Chrome 123 and Firefox 115
+are no longer supported
+
+### Features
+
+* upgrade to Manifest V3 in Chrome ([3f15d7d](https://github.com/dessant/search-google-us/commit/3f15d7d12386341d196c38fcf90c01a560e74e7f))
+
+
+### Bug Fixes
+
+* remove support for obsolete browser versions ([e0218eb](https://github.com/dessant/search-google-us/commit/e0218eb7d93eb91001826ecef03c4ca3379567d6))
+* update dependencies ([a904123](https://github.com/dessant/search-google-us/commit/a904123088840af0dbf907a46d1203ef6822ba59))
 
 ## [4.0.0](https://github.com/dessant/search-google-us/compare/v3.0.2...v4.0.0) (2023-07-02)
 
